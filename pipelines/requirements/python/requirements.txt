@@ -1,0 +1,15 @@
+ruffus
+cgat-core
+glob
+argparse
+logging
+warinings
+pandas
+numpy
+matplotlib
+scanpy
+anndata
+sccoda
+cna
+pickle
+multianndata

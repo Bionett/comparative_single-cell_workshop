@@ -1,0 +1,28 @@
+# ------------------------------------------------------------------------------
+# pipeline_genevar.py input parameters
+# ------------------------------------------------------------------------------
+# Anndata object containing count layer [Rewuired]
+adata_file: adata.h5ad
+# Cell metadata .tsv file. indexed by `barcode_id` variable [Required]
+cell_metadata: cell_metadata.tsv.gz
+# Cell type variable in cell-metadata table [Required]
+cell_cluster_var: cluster
+# Sample variable variable in cell-metadata table [Required]
+sampleid_var: sample_id
+# Mininmum number of gene counts. Only genes above this threshold are 
+# considered [Required]
+min_gene_count: 200
+# Sample metadata. (indexed by sample_id) [Optional]
+sample_meta:
+# Sample metavariables (separated by comma) available in cell_metadata to model
+# [Required]
+sample_var_2model: condition,experiment,sex,batch,seq_batch
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# resoures
+cores: 5
+memory: 100G
+# ------------------------------------------------------------------------------
+
+

@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# Gather cell-metadata
+# Cell metadata .tsv file. Must have an `barcode_id` column [Required]
+cell_metadata: ./cell_metadata.tsv.gz
+# Cell cluster variable in cell-metadata table [Required]
+cell_cluster_var: cluster 
+# Sample variable variable in cell-metadata table [Required]
+sampleid_var: sample_id
+# Sample metavariable available in cell_metadata to model [Required]
+sample_condition_var: condition
+# Sample metavariable available in cell_metadata to model [Required]
+sample_cond_reflevel: control
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# CNA inputs
+# Anndata object containing cell-cell graph
+adata_file: adata.h5ad
+# Sample metadata variable to account during modeling (only 2 level variable)
+covariate: sex
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# resoures
+cores: 5
+memory: 100G
+# ------------------------------------------------------------------------------
+
+
