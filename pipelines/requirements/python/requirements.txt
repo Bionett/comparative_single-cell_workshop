@@ -1,9 +1,7 @@
 ruffus
-cgat-core
-glob
+cgatcore
 argparse
 logging
-warinings
 pandas
 numpy
 matplotlib
@@ -11,5 +9,5 @@ scanpy
 anndata
 sccoda
 cna
-pickle
 multianndata
+notebook
