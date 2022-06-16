@@ -1,7 +1,6 @@
 ruffus
 cgatcore
 argparse
-logging
 pandas
 numpy
 matplotlib
