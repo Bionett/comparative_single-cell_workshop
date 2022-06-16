@@ -110,7 +110,7 @@ def getCellcounts(infile, outfile):
      "M" in PARAMS["memory"] ):
         job_memory = PARAMS["memory"]
 
-    statement = ''' Rscript %(code_dir)s/diff_tissue_comp/R/prepare_sccoda_tables.R
+    statement = ''' Rscript %(code_dir)s/difftissue/R/prepare_sccoda_tables.R
                     --cellmeta=%(cellmeta)s
                     --cellvar=barcode_id
                     --curated_cellmeta=None
@@ -144,7 +144,7 @@ def runscCODA(infile, outfile):
      "M" in PARAMS["memory"] ):
         job_memory = PARAMS["memory"]
 
-    statement = ''' python %(code_dir)s/diff_tissue_comp/python/run_sccoda.py
+    statement = ''' python %(code_dir)s/difftissue/python/run_sccoda.py
                     --cell_count_file=%(cellcount)s
                     --sample_meta=%(samplemeta)s
                     --conditionvar=%(condvar)s
@@ -171,7 +171,7 @@ def runCNA(outfile):
      "M" in PARAMS["memory"] ):
         job_memory = PARAMS["memory"]
   
-    statement = ''' python %(code_dir)s/diff_tissue_comp/python/run_cna.py
+    statement = ''' python %(code_dir)s/difftissue/python/run_cna.py
                     --adata_file=%(adata)s
                     --conditionvar=%(condvar)s
                     --covariate=%(covar)s

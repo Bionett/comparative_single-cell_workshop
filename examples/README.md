@@ -10,3 +10,45 @@ This [study](https://academic.oup.com/brain/article/145/3/964/6469020) sequenced
 ## Aim
 Identify the cellular & gene expression changes in the PD midbrain.
 
+## Tissue composition
+#### New folder
+
+```bash
+mkdir tissue_diffcomp
+cd tissue_diffcomp
+```
+
+#### Pipeline input parameters
+```bash
+python ../../pipelines/difftissue/pipeline_difftissue_comp.py config
+```
+
+#### Run pipeline
+```bash
+python ../../pipelines/difftissue/pipeline_difftissue_comp.py make full -v5 --no-cluster
+```
+
+#### Data visualization
+Let's use Rstudio to explore the results. 
+
+## Differential gene expression
+#### New folder
+
+```bash
+mkdir celltype_diffexp
+cd celltype_diffexp
+```
+
+#### Pipeline input parameters
+```bash
+python ../../pipelines/diffgene/pipeline_genevar.py config
+```
+
+#### Run pipeline
+```bash
+python ../../pipelines/diffgene/pipeline_genevar.py make full -v5 --no-cluster
+```
+
+#### Model expression & data visualization
+Let's use Rstudio to explore the results. 
+
