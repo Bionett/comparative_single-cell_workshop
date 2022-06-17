@@ -2,11 +2,11 @@
 # pipeline_genevar.py input parameters
 # ------------------------------------------------------------------------------
 # Anndata object containing count layer [Rewuired]
-adata_file: adata.h5ad
+adata_file: ../../data/anndata/human_midbrain.h5ad
 # Cell metadata .tsv file. indexed by `barcode_id` variable [Required]
-cell_metadata: cell_metadata.tsv.gz
+cell_metadata: ../../data/metadata/cell_metadata.tsv.gz
 # Cell type variable in cell-metadata table [Required]
-cell_cluster_var: cluster
+cell_cluster_var: cell_ontology
 # Sample variable variable in cell-metadata table [Required]
 sampleid_var: sample_id
 # Mininmum number of gene counts. Only genes above this threshold are 
@@ -16,13 +16,13 @@ min_gene_count: 200
 sample_meta:
 # Sample metavariables (separated by comma) available in cell_metadata to model
 # [Required]
-sample_var_2model: condition,experiment,sex,batch,seq_batch
+sample_var_2model: condition,seq_batch,sex,chromium_batch
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 # resoures
-cores: 5
-memory: 100G
+cores: 4
+memory: 10G
 # ------------------------------------------------------------------------------
 
 

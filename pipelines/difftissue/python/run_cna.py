@@ -19,7 +19,7 @@ import cna
 # ############################################################################ #
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-L = logging.getLogger("build_cellxgene_public.py")
+L = logging.getLogger("run_cna.py")
 
 # ############################################################################ #
 # ######################## Parse the arguments ############################### #
@@ -53,16 +53,19 @@ if not os.path.exists(args.adata_file):
     sys.exit("Input h5ad file non-existing.")
 
 adata = ad.read_h5ad(args.adata_file)
+L.info("AnnDara")
 L.info(adata)
 
 adata = MultiAnnData(adata, sampleid='sample_id')
+L.info("AnnDara multsample")
 L.info(adata)
 
 # ############################################################################ #
 # ######################## Setting sample metadata ########################### #
 # ############################################################################ #
 
-L.info('adata.samplem has', len(adata.samplem.columns), 'columns')
+L.info("Sample metadata")
+L.info(adata.samplem)
 
 samplevars = [args.conditionvar]
 
@@ -79,11 +82,14 @@ for cv in samplevars:
   new_meta.append(nmeta)
 
 meta = pd.concat(new_meta)
+L.info(meta)
 
 if not args.batch == None:
   batch = pd.factorize(adata.obs[args.batch])[0].copy()
   batch = np.array(batch, dtype=np.int64)
+  L.info(batch)
   meta['batch'] = batch
+  L.info(meta)
 
 meta['sample_id'] = adata.obs.loc[meta.index, 'sample_id']
 
@@ -95,7 +101,6 @@ adata.obs_to_sample(meta.columns[:-1])
 for col in adata.samplem.columns:
   adata.samplem[col] = np.array(adata.samplem[col], dtype=np.int64)
 
-L.info('now d.samplem has', len(adata.samplem.columns), 'columns')
 L.info(adata.samplem.head())
 
 # ############################################################################ #

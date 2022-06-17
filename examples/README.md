@@ -28,6 +28,9 @@ python ../../pipelines/difftissue/pipeline_difftissue_comp.py config
 python ../../pipelines/difftissue/pipeline_difftissue_comp.py make full -v5 --no-cluster
 ```
 
+#### Output availability
+difftissue output can be found [here](https://drive.google.com/file/d/1yC6dBqd_Tmxh-MFhyJxUzNvSaN_iy6uS/view?usp=sharing) (.tar) or [here](https://drive.google.com/file/d/1dKIedhanGnHuSE6ctziLW7Q4lIgGCwfu/view?usp=sharing) (.zip).
+
 #### Data visualization
 Let's use Rstudio to explore the results. 
 
@@ -49,6 +52,10 @@ python ../../pipelines/diffgene/pipeline_genevar.py config
 python ../../pipelines/diffgene/pipeline_genevar.py make full -v5 --no-cluster
 ```
 
+#### Output availability
+diffgene output can be found [here](https://drive.google.com/file/d/1HkFpd8eHNy4c7IfQwipGVYb0pjzLvONN/view?usp=sharing) (.tar) or [here](https://drive.google.com/file/d/1di2g6P0Dh6idnId2hfiJ_7yOAl65sueJ/view?usp=sharing) (.zip).
+
 #### Model expression & data visualization
 Let's use Rstudio to explore the results. 
+
 

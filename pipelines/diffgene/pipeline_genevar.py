@@ -105,7 +105,7 @@ def getpBulk(infile, outfile):
      "M" in PARAMS["memory"] ):
         job_memory = PARAMS["memory"]
 
-    statement = ''' python %(code_dir)s/genevar/python/get_pbulk.py
+    statement = ''' python %(code_dir)s/diffgene/python/get_pbulk.py
                     --adata_file=%(infile)s
                     --cell_metadata=%(cellmeta)s
                     --cell_var=%(clustervar)s
@@ -143,7 +143,7 @@ def runPVCA(infile, outfile):
      "M" in PARAMS["memory"] ):
         job_memory = PARAMS["memory"]
 
-    statement = ''' Rscript %(code_dir)s/genevar/R/run_pvca.R
+    statement = ''' Rscript %(code_dir)s/diffgene/R/run_pvca.R
                     --pbulk=%(inpbulk)s
                     --cellmeta=%(cellmeta)s
                     --cell_var=%(clustervar)s

@@ -125,9 +125,10 @@ get_pheno_weights <- function(norm_mat, samplemeta, samplevar, celltype=NULL) {
     
   }, error = function(e) {
     
-    message("PVCA calculation failed.")
-    message(e)
-    flog.info(samplevar, capture = TRUE)
+    flog.info("PVCA calculation failed.")
+    flog.info("error: ", e, capture = TRUE)
+
+    flog.info("For var: ", samplevar, capture = TRUE)
     return(NULL)
     
   })
@@ -299,8 +300,8 @@ pvcas <- lapply(cellvars, function(cv) {
       summarise('nsamples' = n()) %>%
       arrange(nsamples) -> nsample
     
-    print(head(nsample))
-    
+    flog.info("#sample: ", head(nsample), capture = TRUE)
+       
     if(1 %in% nsample$nsamples) {
       
       flog.info(cv, " variable create single-sample levels combined with the cell-type variable.",
@@ -323,6 +324,9 @@ pvcas <- lapply(cellvars, function(cv) {
         summarise('nsamples' = n()) %>%
         arrange(nsamples) -> nsample
       
+      flog.info("# sample after new var created", 
+                head(nsample), capture = TRUE)
+
       if(1 %in% nsample$nsamples) { 
         
         return(NULL)
