@@ -151,7 +151,7 @@ head(meta)
 celltypes <- unique(meta[[cellvar]])
 celltypes
 
-lapply(celltypes, function(celltype) {
+lapply(celltypes[-12], function(celltype) {
   
   print(celltype)
   
@@ -173,6 +173,40 @@ lapply(celltypes, function(celltype) {
   
   write.table(res, gsub(".tsv", paste0("_", celltype, "_minmodel.tsv"), 
                         output_file),
-              sep = "\t", row.names = F, quote = F)
+              sep = "\t", row.names = T, quote = F)
   
 })
+
+deg_files <- list.files(dirname(output_file), pattern = "minmodel.tsv", full.name = TRUE)
+names(deg_files) <- gsub("deg_|_minmodel.tsv", "", basename(deg_files))
+
+deg_files
+
+
+
+degs <- do.call(rbind,
+		lapply(names(deg_files), function(cell) {
+			print(cell)
+			d <- fread(deg_files[[cell]])
+			d[["cell_type"]] <- cell
+			d
+		})
+	)
+
+head(degs)
+
+pval <- 0.05
+
+degs %>%
+	filter(padj < pval) %>%
+	mutate('regulation' = ifelse(log2FoldChange < 0, "down", "up")) %>%
+	group_by(cell_type, regulation) %>%
+	summarise('#genes' = n()) -> top_deg
+
+top_deg
+
+degs %>%
+	filter(padj < pval) %>%
+	mutate('regulation' = ifelse(log2FoldChange < 0, "down", "up")) %>%
+	filter(regulation == "up") %>%
+	filter(cell_type == "Microglia")
